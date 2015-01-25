@@ -1,5 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Race, :type => :model do
+describe Race do
+	context 'relationships' do
+		it {should have_many(:participations)}
+		it {should have_many(:runners).through(:participations)}
+		it {should belong_to(:meet)}
+	end
   
 end
