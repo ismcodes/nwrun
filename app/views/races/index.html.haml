@@ -1,0 +1,9 @@
+%h2 Races
+
+
+%table
+  %th Event Name
+  %th Number of Runners
+  - @races.each do |race|
+    %td= link_to race.event, race_path(race)
+    %td= race.runners.size
