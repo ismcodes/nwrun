@@ -11,7 +11,7 @@ describe RacesController do
   end
 
   it "gets all races for certain event" do
-    expect(get: "/races/event/5").to route_to("races#show", event_id: '1')
+    expect(get: "/meets/1/events/5").to route_to("races#show", meet_id: '1', event_id: '5')
   end
 
   context 'nested under meet' do

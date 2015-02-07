@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :races, only: :index
   end
   resources :races, only: [:index, :show]
+
+  #probably more efficient way to do this:
+  get '/meets/:meet_id/events/:event_id' => 'races#show'
   # Example resource route with options:
   #   resources :products do
   #     member do
