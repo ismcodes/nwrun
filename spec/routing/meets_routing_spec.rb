@@ -15,6 +15,7 @@ describe MeetsController do
 	end
 
 	it "routes to create new meet" do
-		expect(post: "/meets/new").to route_to('meets#new')#?
+		expect(post: "/meets/new").to route_to('meets#scaffold')#?
 	end
+
 end

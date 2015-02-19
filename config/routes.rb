@@ -17,9 +17,12 @@ Rails.application.routes.draw do
   resources :meets, only: [:index, :show] do
     resources :races, only: :index
   end
+  get '/meets/new' => 'meets#new_template'
+  post '/meets/new' => 'meets#scaffold'
+  # better name for this? scaffold b/c adds to races & runners too
   resources :races, only: [:index, :show]
-
-  #probably more efficient way to do this:
+  
+  # probably more efficient way to do this:
   get '/meets/:meet_id/events/:event_id' => 'races#show'
   # Example resource route with options:
   #   resources :products do
