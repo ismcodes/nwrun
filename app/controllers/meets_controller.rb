@@ -5,7 +5,7 @@ class MeetsController < ApplicationController
   end
 
   def scaffold
-    
-  end
 
+  end
+  
 end
