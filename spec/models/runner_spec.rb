@@ -33,7 +33,7 @@ describe Runner do
   it "#event_info gets EventManager for runner's events of certain event_name" do
     runner = Runner.create
     expect(runner.event_info(@race.event)).to be_nil
-    runner.run(@race,1234)
-    expect(runner.event_info(@race.event).mean).to eq 1234
+    runner.run(@race,1111)
+    expect(runner.event_info(@race.event).mean).to eq 1111
   end
 end

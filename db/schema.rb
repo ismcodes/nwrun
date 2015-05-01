@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150204203424) do
 
   create_table "event_managers", force: :cascade do |t|
     t.decimal  "stdev"
-    t.integer  "mean"
+    t.decimal  "mean"
     t.integer  "number_races"
     t.string   "event_name"
     t.integer  "runner_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150204203424) do
 
   create_table "runners", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
+    t.integer  "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

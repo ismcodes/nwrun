@@ -1,6 +1,0 @@
-%form{action:'new',method:'post'}
-  %input{type:'text',placeholder='Meet name',name:'meet_name'}
-  - Runner.all.each do |runner|
-    %h6= runner.name
-    %input{type:'number',name:runner.email,placeholder:'Time in seconds'}
-    %input{type:'text',name:runner.email+"_event",placeholder:'Event name'}

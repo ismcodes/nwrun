@@ -1,0 +1,25 @@
+:javascript
+  var count = 0;
+
+  var runnerTemplate = function(){
+    return "<br><div class='runner' data-index='" + count + "'>"
+      + "<input type='text' placeholder=\"Runner's email\">"//backslash not escaping single quote?
+      + "<input type='number' placeholder='Time in seconds'>"
+  }
+
+  function addRunner(event){
+    count += 1;
+    console.log(runnerTemplate())
+    $("div[name='" + event + "']").eq(0).children().eq(1).append(runnerTemplate());
+  }
+
+%form{onsubmit:'aggregateEvents'}
+  %input{type:'text', placeholder:'Meet name', name:'meet_name'}
+  - EVENT_NAMES.each do |event|
+    %div{class:"event", name:event, style:"margin-left:10px;"}
+      %h6=event
+      %div{class:"event-data"}
+        %div{class:"runner", index:"0"}
+          %input{type:'text', placeholder:'Runner\'s email'}
+          %input{type:'number', placeholder:'Time in seconds'}
+      %span{style:"border:1px solid black;", onclick:"addRunner('"+event+"')"}+

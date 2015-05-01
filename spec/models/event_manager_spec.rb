@@ -19,7 +19,7 @@ describe EventManager do
 
     it "updates mean" do
       expect(@evt_mgr.mean).to eq 0
-      r = (1..rand(100)).to_a
+      r = [1,200,54,234,22]#(3..rand(100)).to_a
       r.each {|x| @evt_mgr.update_stats(x)}
       expect(@evt_mgr.mean).to eq r.inject(:+)/r.length.to_f #prevents rounding
     end

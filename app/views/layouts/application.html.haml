@@ -6,5 +6,33 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %script{src:"http://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/dist/typeahead.jquery.js"}
+    %script{src:"http://cdn.jsdelivr.net/algoliasearch/3.0.7/algoliasearch.min.js"}
+    :javascript
+      var algolia = algoliasearch('DDJ242V0HZ', 'aa24912984de31184a94b31e80376830');
+      var index = algolia.initIndex('Runner');
+      var lastHit = -1;
+      $(window).load(function(){
+        $("#searchbox-form").on('submit',function(){
+          alert();
+          if(lastHit != -1 && $("#searchbox").val().length > 0){
+            window.location.href = window.location.origin + "/runners/" + lastHit;
+          }
+        });
+        $('#searchbox').typeahead(null, {
+          source: index.ttAdapter(),
+          displayKey: 'name',
+          templates: {
+            suggestion: function(hit) {
+              console.log(hit)
+              lastHit = hit.id;
+              //TODO: show other possible completions
+            }
+          }
+        });
+      });
+
   %body
+    %form{id:'searchbox-form'}
+      %input{class:'typeahead', id:'searchbox'}
     = yield
